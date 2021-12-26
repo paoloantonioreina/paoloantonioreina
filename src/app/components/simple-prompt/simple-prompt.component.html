@@ -1,0 +1,18 @@
+<div *ngIf="loader" class="loader">
+  <mat-progress-bar mode="query"></mat-progress-bar>
+</div>
+<h2 mat-dialog-title>Save image #{{data.image_id}}</h2>
+<mat-dialog-content class="mat-typography">
+<div *ngIf="!loader">
+  <p>This image has been saved {{bookmarkedTimes}} times.</p>
+  <p>Enter a folder name to store the image</p>
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Folder Name</mat-label>
+    <input matInput [(ngModel)]="folderName" (keydown.space)="$event.preventDefault();" required >
+  </mat-form-field>
+</div>
+</mat-dialog-content>
+<mat-dialog-actions align="end"  *ngIf="!loader">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button cdkFocusInitial  (click)="savePicture()">Save</button>
+</mat-dialog-actions>

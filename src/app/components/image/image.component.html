@@ -1,0 +1,14 @@
+<div [class]="(isSaved) ? 'col-saved' : 'col'">
+  <div class="card">
+    <img [src]="src" [id]="id" *ngIf="!isSaved" class="pointer" (click)="saveImage()">
+    <img [src]="src" [id]="id" *ngIf="isSaved"  >
+  </div>
+  <div class="bottom">
+    <span class="icon">
+      <button  mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+        <mat-icon>forward</mat-icon>
+      </button>
+    </span>
+    <div class="title">{{title | trasform :90}}</div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+{
+  "/api": {
+    "target": "https://tourscanner.com",
+    "secure": true,
+    "pathRewrite": {
+      "^/api": ""
+    },
+    "changeOrigin": true
+}
+}

@@ -1,0 +1,9 @@
+.bottomside {
+  position: fixed;
+  bottom: 0px;
+  top: calc(100vh - 50px);
+  z-index: 1000;
+  width: 1000px;
+  margin: auto;
+  background-color: #ffffff;
+}

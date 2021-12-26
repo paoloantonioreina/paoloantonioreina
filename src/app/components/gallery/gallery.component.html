@@ -1,0 +1,26 @@
+
+ <div *ngIf="loader">
+  <mat-progress-bar mode="query"></mat-progress-bar>
+</div>
+
+<div *ngIf="!loader && error!=''" >
+   <div class="error">
+     {{error}}
+   </div>
+</div>
+
+
+
+<mat-tab-group  *ngIf="!loader"  (selectedTabChange)="setTab($event)" [class]="class" >
+  <mat-tab label="All images"></mat-tab>
+  <mat-tab *ngFor="let folder of folders" label="{{folder}}" >
+  </mat-tab>
+</mat-tab-group>
+{{class}}
+<div *ngIf="folder==='main'">
+  <app-image (save)="imageBookMark($event)" *ngFor="let image of images" [id]="image.image_id" [src]="image.url" [title]="image.title"></app-image>
+</div>
+<div *ngIf="folder!='main'">
+  <app-image  *ngFor="let image of listImage(folder)" [id]="image.image_id" [src]="image.url" [title]="image.title"></app-image>
+</div>
+
