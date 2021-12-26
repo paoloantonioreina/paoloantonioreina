@@ -29,7 +29,9 @@ export class SimplePromptComponent implements OnInit {
   ngOnInit() {
     this.askTosave();
   }
-
+  /**
+   * save data to server after success response save the image data in the localStorage
+   */
   public savePicture() {
     this.loader = true;
     this.api.savePicture(this.data.image_id).subscribe(
@@ -52,13 +54,16 @@ export class SimplePromptComponent implements OnInit {
       );
   }
 
-
+  /**
+   * check how many times image has saved
+   */
   public askTosave() {
     this.loader = true;
     this.api.askToSave(this.data.image_id).subscribe((data:number)=>{
       this.bookmarkedTimes = data;
       this.loader = false;
     }, (error) => {
+       // we dont know the error response format !!
       this.loader = false;
       this.error = 'something went wrong';
     });

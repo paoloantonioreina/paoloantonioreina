@@ -22,9 +22,12 @@ export class ImageComponent implements OnInit {
   }
 
   ngOnInit() {
+    // check if the image already saved
     this.isSaved = this.storage.isSaved(this.id);
   }
-
+  /**
+   * emit the event as an image object
+   */
   saveImage() {
       this.save.emit({image_id: this.id, url: this.src, title: this.title});
   }

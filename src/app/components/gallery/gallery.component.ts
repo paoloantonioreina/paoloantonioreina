@@ -34,8 +34,7 @@ export class GalleryComponent implements OnInit {
           || document.documentElement.scrollTop
           || document.body.scrollTop || 0;
 
-        this.class = (verticalOffset > 40) ? 'bottomside' : '';
-         console.log(verticalOffset);
+     this.class = (verticalOffset > 40) ? 'bottomside' : '';
   }
 
   ngOnInit() {
@@ -43,6 +42,11 @@ export class GalleryComponent implements OnInit {
     this.getImages();
   }
 
+
+  /**
+   * Change tab selected
+   * @param tab
+   */
   public setTab(tab: MatTabChangeEvent) : void {
      if (tab.index > 0) {
       this.folder =  tab.tab.textLabel;
@@ -51,7 +55,9 @@ export class GalleryComponent implements OnInit {
        this.folder = 'main';
      }
   }
-
+  /**
+   * subscribe to the observable getImages()
+   */
   getImages(): void {
     this.loader = true;
     this.api.getImages().subscribe(
@@ -65,8 +71,11 @@ export class GalleryComponent implements OnInit {
       }
     );
   }
-
-   imageBookMark(image: image): void {
+  /**
+   * ask to bookmark this image
+   * @param image
+   */
+  imageBookMark(image: image): void {
       const dialogRef = this.dialog.open(SimplePromptComponent, {
         data: image,
       });
@@ -77,6 +86,12 @@ export class GalleryComponent implements OnInit {
       });
     }
 
+
+    /**
+     * Simple list the element for each folder
+     * @param folder
+     * @returns
+     */
     public listImage(folder) {
       return this.storage.folderItems(folder);
     }
